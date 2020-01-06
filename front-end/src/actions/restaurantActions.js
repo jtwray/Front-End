@@ -38,7 +38,7 @@ export const createRestaurant = (Restaurant) => dispatch => {
 export const fetchRestaurant = id => dispatch => {
     dispatch({type: FETCH_RESTAURANT});
     axiosWithAuth()
-        //.get(`/restaurants/${id}`)
+        // NEED id? -> .get(`/restaurants/${id}`)
         .get(`/restaurants`)
         .then(response => {
         dispatch({

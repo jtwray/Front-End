@@ -37,7 +37,7 @@ export const loginUser = (login) => dispatch => {
 //LOGOUT
 export const logoutUser = (logout) => dispatch => {
     axiosWithAuth()
-    .post('/users/lougout', logout)
+    .post('/users/logout', logout)
     .then(res => {
         localStorage.setItem('token', res.data);
         //props.history.push('/');

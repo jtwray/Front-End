@@ -1,78 +1,77 @@
 import {
-    FETCH_USER,
-    FETCH_USER_SUCCESS,
-    FETCH_USER_FAIL,
+    FETCH_RESTAURANT,
+    FETCH_RESTAURANT_SUCCESS,
+    FETCH_RESTAURANT_FAIL,
 
-    UPDATE_USER_SUCCESS,
-    UPDATE_USER_FAIL,
+    UPDATE_RESTAURANT,
+    UPDATE_RESTAURANT_FAIL,
 
-    DELETE_USER,
-    DELETE_USER_FAIL,
+    DELETE_RESTAURANT,
+    DELETE_RESTAURANT_FAIL,
 
-  } from "../actions/userActions";
+  } from "../actions/restaurantActions";
   
   const initialState = {
-    user: {},
-    //NEED? -> username,password,location,email
-    //users: [],
+    restaurant: {},
+    //NEED? -> name, cuisine, location, opens, closes, rating, photos
     loading: false,
-    userDeleted: false,
+    restaurantDeleted: false,
     error: null
     
   };
   
-  export const userReducer = (state = initialState, action) => {
+  export const restaurantReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case FETCH_USER: 
+        case FETCH_RESTAURANT: 
             return {
                 ...state,
                 loading: true, 
                 error: ''
             };
 
-        case FETCH_USER_SUCCESS: 
+        case FETCH_RESTAURANT_SUCCESS: 
             return {
                 ...state,
-                user: action.payload,
+                rest: action.payload,
                 loading: false, 
                 error: ''
             };
      
-        case FETCH_USER_FAIL: 
+        case FETCH_RESTAURANT_FAIL: 
             return {
                 ...state,
                 error: action.payload
             };
 /////////////////////////////////////////////
 
-        case UPDATE_USER:
+        case UPDATE_RESTAURANT:
             return {
                 ...state,
-                user: action.payload,
+                restaurant: action.payload,
                 loading: false, 
             }
 
-        case UPDATE_USER_FAIL:
+        case UPDATE_RESTAURANT_FAIL:
             return {
                 ...state,
                 error: action.payload
             }
 
 //////////////////////////////////////////////////////////////
-//////////////// DELETE USER  ////////////////////////////////
+//////////////// DELETE REST  ////////////////////////////////
 //////////////////////////////////////////////////////////////
 
 
-            case DELETE_USER: 
+            case DELETE_RESTAURANT: 
             return {
                 ...state,
-                user: action.payload,
+                restaurant: action.payload,
                 loading: false, 
                 error: ''
             };
 
-        case DELETE_USER_FAIL: 
+        case DELETE_RESTAURANT_FAIL: 
             return {
                 ...state,
                 error: action.payload,
