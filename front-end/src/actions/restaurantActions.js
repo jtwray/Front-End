@@ -22,7 +22,7 @@ export const DELETE_RESTAURANT_FAIL = "DELETE_RESTAURANT_FAIL"
 
 export const createRestaurant = (Restaurant) => dispatch => {
     axiosWithAuth()
-    .post('...', Restaurant)
+    .post('/restaurants/add', Restaurant)
     .then(res => {
         localStorage.setItem('token', res.data);
         //props.history.push('/');
@@ -38,7 +38,8 @@ export const createRestaurant = (Restaurant) => dispatch => {
 export const fetchRestaurant = id => dispatch => {
     dispatch({type: FETCH_RESTAURANT});
     axiosWithAuth()
-        .get(`.../${id}`)
+        //.get(`/restaurants/${id}`)
+        .get(`/restaurants`)
         .then(response => {
         dispatch({
             type: FETCH_RESTAURANT_SUCCESS,
@@ -57,13 +58,13 @@ export const fetchRestaurant = id => dispatch => {
     };
 
 ////////////////////////////////////////////////////////
-//////////////// EDIT USER /////////////////////////////
+//////////////// EDIT RESTAURANT /////////////////////////////
 ////////////////////////////////////////////////////////
 
 export const editRestaurant = (user, id) => dispatch => {
 console.log(user, 'RESTAURANT DATA')
     axiosWithAuth()
-        .put(`.../${id}`, user)
+        .put(`/restaurants/${id}`, user)
         .then(response => {
         dispatch({
             type: UPDATE_RESTAURANT, 
@@ -85,7 +86,7 @@ console.log(user, 'RESTAURANT DATA')
 
 export const deleteRestaurant = id => dispatch => {
     return axiosWithAuth()
-        .delete(`.../${id}`)
+        .delete(`/restaurants/${id}`)
         .then(response => {
             console.log(response)
             localStorage.removeItem('token');

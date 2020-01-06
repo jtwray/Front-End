@@ -21,9 +21,11 @@ export const DELETE_USER_FAIL = "DELETE_USER_FAIL"
 ////////////////  POST LOGIN and REGISTER USER/////////////////////////////
 ////Used in REGISTER and SIGNIN form
 
+
+// LOGIN
 export const loginUser = (login) => dispatch => {
     axiosWithAuth()
-    .post('...', login)
+    .post('/users/login', login)
     .then(res => {
         localStorage.setItem('token', res.data);
         props.history.push('/');
@@ -31,9 +33,21 @@ export const loginUser = (login) => dispatch => {
       .catch(err => console.log(err));
 }
 
+
+//LOGOUT
+export const logoutUser = (logout) => dispatch => {
+    axiosWithAuth()
+    .post('/users/lougout', logout)
+    .then(res => {
+        localStorage.setItem('token', res.data);
+        //props.history.push('/');
+      })
+      .catch(err => console.log(err));
+}
+
 export const registerUser = () => dispatch => {
     axios
-    .post('...')
+    .post('https://foodiefunsix.herokuapp.com/users/register')
     .then(response => {
       dispatch({
       type: FETCH_REGISTER_USER_SUCCESS,
@@ -47,71 +61,71 @@ export const registerUser = () => dispatch => {
 //////////////// FETCH USER /////////////////////////////
 ////////////////////////////////////////////////////////
 
-export const fetchUser = id => dispatch => {
-    dispatch({type: FETCH_USER});
-    axiosWithAuth()
-        .get(`.../${id}`)
-        .then(response => {
-        dispatch({
-            type: FETCH_USER_SUCCESS,
-            payload: response.data
-        });
-        })
+// export const fetchUser = id => dispatch => {
+//     dispatch({type: FETCH_USER});
+//     axiosWithAuth()
+//         .get(`.../${id}`)
+//         .then(response => {
+//         dispatch({
+//             type: FETCH_USER_SUCCESS,
+//             payload: response.data
+//         });
+//         })
 
-        .catch(error => {
-        console.log(error);
-        dispatch({
-            type: FETCH_USER_FAIL,
-            payload: error.response
+//         .catch(error => {
+//         console.log(error);
+//         dispatch({
+//             type: FETCH_USER_FAIL,
+//             payload: error.response
             
-            });
-        });
-    };
+//             });
+//         });
+//     };
 
 ////////////////////////////////////////////////////////
 //////////////// EDIT USER /////////////////////////////
 ////////////////////////////////////////////////////////
 
-export const editUser = (user, id) => dispatch => {
-console.log(user, 'USER DATA')
-    axiosWithAuth()
-        .put(`.../${id}`, user)
-        .then(response => {
-        dispatch({
-            type: UPDATE_USER, 
-            payload: response.data
-        });
-    })
-        .catch(error => {
-        console.log(error);
-        dispatch({
-        type: UPDATE_USER_FAIL,
-        payload: error.response
-        });
-    });
-    };
+// export const editUser = (user, id) => dispatch => {
+// console.log(user, 'USER DATA')
+//     axiosWithAuth()
+//         .put(`.../${id}`, user)
+//         .then(response => {
+//         dispatch({
+//             type: UPDATE_USER, 
+//             payload: response.data
+//         });
+//     })
+//         .catch(error => {
+//         console.log(error);
+//         dispatch({
+//         type: UPDATE_USER_FAIL,
+//         payload: error.response
+//         });
+//     });
+//     };
 
 /////////////////////////////////////////////////////////
 /////////////// DELETE USER   ///////////////////////////
 ////////////////////////////////////////////////////////
 
-export const deleteUser = id => dispatch => {
-    return axiosWithAuth()
-        .delete(`.../${id}`)
-        .then(response => {
-            console.log(response)
-            localStorage.removeItem('token');
+// export const deleteUser = id => dispatch => {
+//     return axiosWithAuth()
+//         .delete(`.../${id}`)
+//         .then(response => {
+//             console.log(response)
+//             localStorage.removeItem('token');
               
-        dispatch({
-            type: DELETE_USER, 
-            payload: response.data
-        });
-        })
-        .catch(error => {
-        console.log(error);
-        dispatch({
-        type: DELETE_USER_FAIL,
-        payload: error.response
-        });
-    });
-}
+//         dispatch({
+//             type: DELETE_USER, 
+//             payload: response.data
+//         });
+//         })
+//         .catch(error => {
+//         console.log(error);
+//         dispatch({
+//         type: DELETE_USER_FAIL,
+//         payload: error.response
+//         });
+//     });
+// }
