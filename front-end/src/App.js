@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import login from './components/login.js';
+import Register from './components/register.js';
 
 function App() {
   return (
