@@ -28,7 +28,7 @@ export const loginUser = (login) => dispatch => {
     .post('/users/login', login)
     .then(res => {
         localStorage.setItem('token', res.data);
-        props.history.push('/');
+        // props.history.push('/');
       })
       .catch(err => console.log(err));
 }

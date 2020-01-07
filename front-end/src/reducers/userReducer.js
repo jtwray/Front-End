@@ -46,18 +46,18 @@ import {
             };
 /////////////////////////////////////////////
 
-        case UPDATE_USER:
-            return {
-                ...state,
-                user: action.payload,
-                loading: false, 
-            }
+        // case UPDATE_USER:
+        //     return {
+        //         ...state,
+        //         user: action.payload,
+        //         loading: false, 
+        //     }
 
-        case UPDATE_USER_FAIL:
-            return {
-                ...state,
-                error: action.payload
-            }
+        // case UPDATE_USER_FAIL:
+        //     return {
+        //         ...state,
+        //         error: action.payload
+        //     }
 
 //////////////////////////////////////////////////////////////
 //////////////// DELETE USER  ////////////////////////////////
