@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+import ReactDOM from "react-dom";
+import { useForm } from "react-hook-form";
 
 const RegistrationBG = styled.div`
 padding-top: 3vh;
