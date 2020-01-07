@@ -21,57 +21,46 @@ align-items: center;
 
 
 // // ---Login Page Function ---
-// function Login(props) => {
-//     // --- UseState, for the username and password ---
-//     // --- DEF: useState is a hook that allows you to have state variables in functional components ---
-//     const [login, setLogin] = useState({
-//         username: '',
-//         password: ''
-//     });
-//     //------------------------------------------------
+function LoginForm() => {
+    // --- UseState, for the username and password ---
+    // --- DEF: useState is a hook that allows you to have state variables in functional components ---
+    const { register, handleSubmit, errors } = useForm();
 
-//     // --- handleChange watches for the changes made in the login and password fields ---
-//     // --- DEF: handleChange whenever someone changes anything in the input area (add/delete) ---
-//     const handleChangesLogin = e => {
-//         setLogin({
-//             ...login,
-//             [e.target.id]: e.target.value
-//         });
-//         console.log(e.target.id);
-//     };
-//     //-----------------------------------------------
-
-//     // ---submitForm
-//     const submitForm = e => {
-//         e.preventDefault();
-//         props.addNewUser(user);
-//         setLogin({ username: '', password: ''});
-//     };
-//     //-----------------------------------------------
-
-//     // --- return statement ---
-//     return (
-
-
-//     )
-
-// } 
-// // --------------------------------------------------
-// // --- Export the Login Function to App.js ---
-// export default Login;
-
-function Login () {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
-        console.log(data);
-    };
+    // const onSubmit = data => {
+    //     console.log(data)
+    //     //axios call here
+    //     axios()
+    //     .post ()
+    // }
+    //     .then(res => {
+    //         console.log('success', res);
+    //     })
+    //     .catch( err =>
+    //         console.log(err.response)
+    //         );
 
     return (
-        <form className="login" onSubmit={handleSubmit(onSubmit)}>
-            <h1>Sign In</h1>
-            <label>Username: </label>
-            
-    )
+        <div className="login-container">
+            <div className="header">Login</div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form">
+            <div className="form-group">
 
+            {/* --- Username field start --- */}
+            <label htmlFor="username">
+                Username: 
+                <input type="text"
+                name="username"
+                placeholder="username"
+                // add ref
+                />
+            </label>
+
+            </div>
+            </div>
+            </form>
+        </div>
+
+    )
 
 }

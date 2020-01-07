@@ -36,6 +36,6 @@ function Register(props) => {
             [e.target.id]: e.target.value
         });
     };
-} 
+}
 
 export default Register;
